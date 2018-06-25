@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  webapp:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    ports:
+      - "55555:3000"
+      - "9999:9999"
+    volumes:
+      - ".:/opt/app"
+      #- "/opt/app/node_modules"
+    command: nodemon --inspect=0.0.0.0:9999 index.js
