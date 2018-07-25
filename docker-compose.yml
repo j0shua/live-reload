@@ -11,4 +11,10 @@ services:
     volumes:
       - ".:/opt/app"
       #- "/opt/app/node_modules"
-    command: nodemon --inspect=0.0.0.0:9999 index.js
+    command: nodemon -L --inspect=0.0.0.0:9999 index.js
+    depends_on:
+      - redis
+    links:
+      - "redis:redis_host"
+  redis:
+    image: "redis:alpine"
